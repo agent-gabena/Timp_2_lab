@@ -5,16 +5,19 @@
 #include <map>
 #include <cctype>
 #include <codecvt>
-
+#include <algorithm>
 
 class modAlphaCipher
 {
 private:
     int newkey;
-    void getValidKey(auto & s);
+    
 public:
+    int getValidKey(int &s);
+    int getValidKeyText(int key, std::string &text);
+    std::string getValidOpenText(std::string &s);
     modAlphaCipher()=delete;
-    modAlphaCipher(const int& key) :newkey(key) {};   
+    modAlphaCipher(const int& key, std::string) :newkey(key) {};   
     std::string encrypt(const std::string& user_str);  
     std::string decrypt(const std::string& user_str); 
 };

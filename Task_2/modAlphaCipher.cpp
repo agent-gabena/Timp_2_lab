@@ -1,6 +1,37 @@
 #include "modAlphaCipher.h"
 
-
+int modAlphaCipher::getValidKey(int &key){
+    if (key < 0){
+        throw cipher_error("Negative key");
+    }
+    return key;
+}
+std::string modAlphaCipher::getValidOpenText(std::string &s)
+{
+    std::string tmp;
+    for(auto c:s){
+        if (isalpha(c))
+        {
+           if (isupper(c))
+                tmp.push_back(c);
+            else
+                tmp.push_back(c);
+        }
+        
+    }
+        if (tmp.empty())
+        {
+            throw cipher_error("Empty open text");
+        }
+        
+    return tmp;
+}
+int modAlphaCipher::getValidKeyText(int key, std::string &text){
+    if(key > int(text.length())){
+        throw cipher_error("The key is bigger than the text");
+    }
+    return 0;
+}
 std::string modAlphaCipher::encrypt(const std::string& user_str) 
 {
     std::string new_str = user_str;
