@@ -1,11 +1,5 @@
 #include "modAlphaCipher.h"
 
-    inline void modAlphaCipher::getValidKey(auto &s){ 
-    if (s == ""){
-        throw cipher_error("key is empty");
-    }
-    
-}
 
 std::string modAlphaCipher::encrypt(const std::string& user_str) 
 {
